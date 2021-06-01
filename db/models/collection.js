@@ -2,10 +2,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Collection = sequelize.define('Collection', {
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     userId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'User'
       }

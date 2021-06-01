@@ -2,13 +2,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Viewed_Movie = sequelize.define('Viewed_Movie', {
     movieId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'Movie'
       }
     },
     userId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'User'
       }
