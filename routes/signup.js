@@ -102,8 +102,30 @@ router.post(
 		});
 
 		const validatorErrors = validationResult(req);
+        // If user input is validated encrypt password.
+        if (validatorErrors.isEmpty()){
 
-        if (validatorErrors)
+            // Attempt to get the user by their email or username
+            const user = await db.User.findOne({where: {email, userName}});
+
+            if(user !== null){
+                const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
+                    if(passwordMatch) {
+                        loginUser(req, res, user);
+                        return res.redirect('/')
+                    }
+            }
+            else {
+                const errors = validatorErrors.array().mapy((error) => error.msg);
+                res.render('signup', {
+                    title: 'Sign Up',
+                    newUser,
+                    csrfToken: req.csrfToken(),
+                    errors
+                });
+            }
+        }
+
 	})
 );
 
