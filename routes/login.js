@@ -7,8 +7,8 @@ const { User } = require('../db/models')
 
 
 router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
-    const { username, password } = req.body;
     //query usernames => find one by UserName
+    const { username, password } = req.body;
     const findUser = await User.findByPk(username);
     const valPassword = await User.findByPk(password);
     if (!findUser) {
@@ -16,13 +16,31 @@ router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
         throw new Error('Invalid Username');
 
     }
-    res.render('/login', {
+    res.render('login', {
+        title: "Login",
+        csrfToken: req.csrfToken(),
 
     });
 
     res.redirect('/user/:id')
 }));
 
+const loginValidators = [
+  check('emailAddress')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Email Address'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Password'),
+];
+
+
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
+    const { emailAddress, password } = req.body;
+
+    let errors = []
+    
+}));
 
 
 
