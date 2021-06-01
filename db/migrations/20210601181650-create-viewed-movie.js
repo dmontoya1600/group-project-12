@@ -11,13 +11,13 @@ module.exports = {
       movieId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Movie'
+          model: 'Movies'
         }
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'User'
+          model: 'Users'
         }
       },
       createdAt: {
