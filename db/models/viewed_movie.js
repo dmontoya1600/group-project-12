@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Viewed_Movie.associate = function(models) {
     // associations can be defined here
+    Viewed_Movie.belongsTo(models.User, {foreignKey: 'userId'})
   };
   return Viewed_Movie;
 };
