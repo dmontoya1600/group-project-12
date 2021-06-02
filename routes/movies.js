@@ -7,6 +7,7 @@ const { csrfProtection, asyncHandler } = require('./utils');
 
 const router = express.Router();
 
+// renders all movies
 router.get(
 	'/',
 	asyncHandler(async (req, res) => {
@@ -18,12 +19,14 @@ router.get(
 	})
 );
 
+// Finds movie based on id
 router.get(
 	'/:id(\\d+)',
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
 
+		// if movie not found, 404
 		if (!movie) {
 			res.status(404);
 			res.send('movie cannot be found!');

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
 const restoreUser = require('../auth');
 const {User} = require('../db/models');
@@ -14,5 +13,6 @@ router.get('/', asyncHandler(async(req, res, next) => {
 
 	});
 }));
+
 
 module.exports = router;
