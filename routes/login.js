@@ -4,61 +4,74 @@ const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const { User } = require('../db/models');
-const { loginUser } = require('../auth')
+const { loginUser } = require('../auth');
+const bcrypt = require('bcryptjs');
 
 
-router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
-    //query usernames => find one by UserName
-    const { username, password } = req.body;
-    const findUser = await User.findByPk(username);
-    const valPassword = await User.findByPk(password);
-    if (!findUser) {
-        res.render('/login');
-        throw new Error('Invalid Username');
 
-    }
+
+router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
     res.render('login', {
         title: "Login",
         csrfToken: req.csrfToken(),
 
     });
-
-    res.redirect('/user/:id')
 }));
 
+// router.get('/', csrfProtection, (req, res, next) => {
+//     res.render('login', {
+//         title: "Login",
+//         csrfToken: req.csrfToken(),
+
+//     });
+// });
+
+
+
 const loginValidators = [
-  check('emailAddress')
+    check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a value for Email Address'),
-  check('password')
+    .withMessage('Please provide a value for User Name'),
+    check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password'),
 ];
 
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
-    const { username, password } = req.body;
+router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
+    const { userName, password } = req.body;
 
     let errors = []
-    const validatorErrors = validationResult(req);
-    const valPassword = await User.findByPk(password);
+    const validationErrors = validationResult(req);
+    // const valPassword = await User.findOne({ where: { password=hashedPassword } });
 
-    if (validationError.isEmpty()) {
-        const findUser = await User.findByPk(username);
+    // console.log(validationErrors);
+
+    if (validationErrors.isEmpty()) {
+        const findUser = await User.findOne({ where: { userName } });
+        // console.log(findUser)
 
         if (findUser !== null) {
-              // If the user exists then compare their password
+            // If the user exists then compare their password
             // to the provided password.
-            const passwordMatch = await bcrypt.compare(password, findUser.hashedPassword.toString());
+            const hashedPassword = await bcrypt.hash(password, 10)
+            const passwordMatch = await bcrypt.compare(hashedPassword, findUser.hashedPassword.toString());
+            console.log(passwordMatch)
 
             if (passwordMatch) {
                 // If the password hashes match, then login the user
                 // and redirect them to the default route.
+                console.log('WE MADE IT')
                 loginUser(req, res, findUser);
                 return res.redirect('/');
 
             }
         }
+        // Otherwise display an error message to the user.
+        errors.push('Login failed for the provided User Name and password');
+    } else  {
+        errors = validationErrors.array().map((error) => error.msg);
+        // console.log(`FUUUUUUUUUUUCK is it ... ${findUser}, ${valPassword}`)
     }
 
 }));
