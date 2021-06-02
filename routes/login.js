@@ -3,7 +3,8 @@ const router = express.Router();
 const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
-const { User } = require('../db/models')
+const { User } = require('../db/models');
+const { loginUser } = require('../auth')
 
 
 router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
@@ -36,10 +37,30 @@ const loginValidators = [
 
 
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
-    const { emailAddress, password } = req.body;
+    const { username, password } = req.body;
 
     let errors = []
-    
+    const validatorErrors = validationResult(req);
+    const valPassword = await User.findByPk(password);
+
+    if (validationError.isEmpty()) {
+        const findUser = await User.findByPk(username);
+
+        if (findUser !== null) {
+              // If the user exists then compare their password
+            // to the provided password.
+            const passwordMatch = await bcrypt.compare(password, findUser.hashedPassword.toString());
+
+            if (passwordMatch) {
+                // If the password hashes match, then login the user
+                // and redirect them to the default route.
+                loginUser(req, res, findUser);
+                return res.redirect('/');
+
+            }
+        }
+    }
+
 }));
 
 
