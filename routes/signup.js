@@ -3,7 +3,6 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 const db = require('../db/models');
-// const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
 
 const router = express.Router();
