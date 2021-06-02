@@ -1,10 +1,16 @@
 extends layout
 
 block content
-    input(type='hidden' name='_csrf' value=csrfToken)
-    label(for='username') User Name
-    input(type="text" name='username')
-    label(for='password') Password
-    input(type="password" name='password')
+    form(action="/login", method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        label(for='userName') User Name
+        input(type="text" name='userName')
+        label(for='password') Password
+        input(type="password" name='password')
 
-    button(type='submit' class='btn') Login
+
+        button(type='submit' class='btn') Login
+    if errors
+        ul
+         each error in errors
+            li= error
