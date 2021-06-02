@@ -6,21 +6,21 @@ block content
             p The following error(s) occurred:
             ul
                 each error in errors
-                    li=error
+                    li= error
     form(action='/signup' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        label(for=firstName)= First Name:
-        input(type=text name=firstName id=firstName value=firstName)
-        label(for=lastName)= Last Name:
-        input(type=text name=lastName id=lastName value=lastName)
-        label(for=userName)= Username:
-        input(type=text name=userName id=userName value=userName)
-        label(for=email)= Email:
-        input(type=email name=email id=email value=email)
-        label(for=password)= Password:
-        input(type=password name=password id=password value=password)
-        label(for=confirmPassword)= Confirm Password:
-        input(type=confirmPassword name=confirmPassword id=confirmPassword value=confirmPassword)
-        button(type=submit class='btn submit-button') Create User
+        label(for="firstName")= 'First Name:'
+        input(type="text" name="firstName" value=user.firstName)
+        label(for="lastName")= 'Last Name:'
+        input(type="text" name="lastName" value=user.lastName)
+        label(for="userName")= 'Username:'
+        input(type="text" name="userName" value=user.userName)
+        label(for="email")= 'Email:'
+        input(type="email" name="email" value=user.email)
+        label(for="password")= 'Password:'
+        input(type="password" name="password" value=user.password)
+        label(for="confirmPassword")= 'Confirm Password:'
+        input(type="confirmPassword" name="confirmPassword" value=user.password)
+        button(type="submit" class='btn submit-button') Create User
     div
         p: a(href='/login') Already registered?
