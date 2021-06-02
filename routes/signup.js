@@ -1,15 +1,17 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+
 const db = require('../db/models');
 const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
 
-router.get('/signup', csrfProtection, (req, res) => {
-    // creates User model instance
+router.get('/', csrfProtection, (req, res) => {
+	// creates User model instance
 	const newUser = db.User.build();
 
-    // renders sign up
+	// renders sign up
 	res.render('signup', {
 		title: 'Sign Up',
 		newUser,
@@ -67,65 +69,58 @@ const userValidators = [
 			}
 			return true;
 		}),
-    check('userName')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a value for Username')
-    .isLength({ max: 20 })
-    .withMessage('Username must not be more than 20 characters long')
-    .isUsername()
-    .withMessage('Username is not valid')
-    .custom((value) => {
-        return db.User.findOne({ where: { userName: value } }).then((user) => {
-            if (user) {
-                return Promise.reject(
-                    'The provided User is already in use by another account'
-                );
-            }
-        });
-    })
-
+	check('userName')
+		.exists({ checkFalsy: true })
+		.withMessage('Please provide a value for Username')
+		.isLength({ max: 20 })
+		.withMessage('Username must not be more than 20 characters long')
+		.withMessage('Username is not valid')
+		.custom((value) => {
+			return db.User.findOne({ where: { userName: value } }).then(
+				(user) => {
+					if (user) {
+						return Promise.reject(
+							'The provided User is already in use by another account'
+						);
+					}
+				}
+			);
+		}),
 ];
 
 router.post(
-	'/signup',
+	'/',
 	csrfProtection,
 	userValidators,
 	asyncHandler(async (req, res) => {
-        // grabs input values from submitted form
+		// grabs input values from submitted form
 		const { firstName, lastName, userName, email, password } = req.body;
-
 		const newUser = db.User.build({
 			email,
 			firstName,
 			lastName,
-            userName
+			userName,
+			password,
 		});
 
 		const validatorErrors = validationResult(req);
-        // If user input is validated encrypt password.
-        if (validatorErrors.isEmpty()){
-
-            // Attempt to get the user by their email or username
-            const user = await db.User.findOne({where: {email, userName}});
-
-            if(user !== null){
-                const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
-                    if(passwordMatch) {
-                        loginUser(req, res, user);
-                        return res.redirect('/')
-                    }
-            }
-            else {
-                const errors = validatorErrors.array().mapy((error) => error.msg);
-                res.render('signup', {
-                    title: 'Sign Up',
-                    newUser,
-                    csrfToken: req.csrfToken(),
-                    errors
-                });
-            }
-        }
-
+		// If user input is validated encrypt password.
+		if (validatorErrors.isEmpty()) {
+			// Hash inputted password
+			const hashedPassword = await bcrypt.hash(password, 10);
+			user.hashedPassword = hashedPassword;
+			await user.save();
+			// loginUser function (req, res, user);
+			res.redirect('/');
+		} else {
+			const errors = validatorErrors.array().map((error) => error.msg);
+			res.render('signup', {
+				title: 'Register',
+				newUser,
+				errors,
+				csrfToken: req.csrfToken(),
+			});
+		}
 	})
 );
 
