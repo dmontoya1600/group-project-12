@@ -1,4 +1,9 @@
 extends layout
 
 block content
-    div(class="movie")
+    if movies
+        each movie in movies
+            div(class="movie")
+                a(href=`${movie.id}` class="movie title")= movie.title
+                h2(class="movie genre")= movie.genre
+                img(class="movie image")
