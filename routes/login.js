@@ -56,7 +56,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
             // to the provided password.
             const hashedPassword = await bcrypt.hash(password, 10)
             const passwordMatch = await bcrypt.compare(hashedPassword, findUser.hashedPassword.toString());
-            console.log(passwordMatch)
+            console.log(hashedPassword, findUser, password)
 
             if (passwordMatch) {
                 // If the password hashes match, then login the user
