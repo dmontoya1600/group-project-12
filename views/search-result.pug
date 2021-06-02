@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    if result
+        each movie in result
+            div(class="search-result")
+                a(href=`${movie.id}` class="movie title")= movie.title
+                h2(class="movie genre")= movie.genre
+                img(class="movie image")
