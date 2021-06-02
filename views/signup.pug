@@ -20,7 +20,7 @@ block content
         label(for="password")= 'Password:'
         input(type="password" name="password" value=user.password)
         label(for="confirmPassword")= 'Confirm Password:'
-        input(type="confirmPassword" name="confirmPassword" value=user.password)
+        input(type="password" name="confirmPassword" value=user.password)
         button(type="submit" class='btn submit-button') Create User
     div
         p: a(href='/login') Already registered?
