@@ -10,12 +10,12 @@ const router = express.Router();
 
 router.get('/', csrfProtection, (req, res) => {
 	// creates User model instance
-	const newUser = db.User.build();
+	const user = db.User.build();
 
 	// renders sign up
 	res.render('signup', {
 		title: 'Sign Up',
-		newUser,
+		user,
 		csrfToken: req.csrfToken(),
 	});
 });
@@ -94,38 +94,40 @@ router.post(
 	csrfProtection,
 	userValidators,
 	asyncHandler(async (req, res) => {
-		// grabs input values from submitted form
+	// 	// grabs input values from submitted form
 		const { email, firstName, lastName, userName, password } = req.body;
 
-		const newUser = db.User.build({
+		const user = db.User.build({
 			email,
 			firstName,
 			lastName,
 			userName,
 		});
 
-		console.log(newUser.firstName);
+
 
 		const validatorErrors = validationResult(req);
 
 		// If user input is validated encrypt password.
+        
 		if (validatorErrors.isEmpty()) {
 			// Hash inputted password
 			const hashedPassword = await bcrypt.hash(password, 10);
-			newUser.hashedPassword = hashedPassword;
-			await newUser.save();
-			// loginUser function (req, res, newUser);
+			user.hashedPassword = hashedPassword;
+			await user.save();
+			// loginUser function (req, res, user);
 			res.redirect('/');
 		} else {
-			// console.log(newUser);
+			// console.log(user);
 			const errors = validatorErrors.array().map((error) => error.msg);
 			res.render('signup', {
 				title: 'Sign Up',
-				newUser,
+				user,
 				errors,
 				csrfToken: req.csrfToken(),
 			});
 		}
+
 	})
 );
 
