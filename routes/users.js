@@ -2,17 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('./utils');
 const restoreUser = require('../auth');
-const {User} = require('../db/models');
-
+const { User } = require('../db/models');
 
 /* GET users listing. */
-router.get('/', asyncHandler(async(req, res, next) => {
-	const sessions = req.session.auth;
+router.get(
+	'/',
+	asyncHandler(async (req, res, next) => {
+		const sessions = req.session.auth;
 
-	res.render('users', {
-
-	});
-}));
-
+		res.render('users', {});
+	})
+);
 
 module.exports = router;

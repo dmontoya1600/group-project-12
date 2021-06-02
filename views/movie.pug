@@ -7,3 +7,8 @@ block content
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
+    div(class="User Reviews")
+        form(action='/reviews' method='')
+            input(type='hidden' name='movieId' value=movie.movieId)
+            button(type='submit')='Write a Review'
+    div(class="All Reviews")

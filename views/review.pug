@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h3= title
+    a(href=`/movie/${movieId}`)= 'Movie Link'
+    form(action='/reviews' method='post')
+        label= 'My rating:'
+        a(href='#' name='1-star')='1'
+        a(href='#' name='2-star')='2'
+        a(href='#' name='3-star')='3'
+        a(href='#' name='4-star')='4'
+        a(href='#' name='5-star')='5'
+        label(for='review')= 'What are your thoughts?'
+        textarea(cols='10' rows='12' name='review')
+        button(type='submit')= 'Post'
