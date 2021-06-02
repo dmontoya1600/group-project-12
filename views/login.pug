@@ -10,3 +10,7 @@ block content
 
 
         button(type='submit' class='btn') Login
+    if errors
+        ul
+         each error in errors
+            li= error

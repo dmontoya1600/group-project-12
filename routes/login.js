@@ -54,21 +54,28 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
         if (findUser !== null) {
             // If the user exists then compare their password
             // to the provided password.
-            const hashedPassword = await bcrypt.hash(password, 10)
-            const passwordMatch = await bcrypt.compare(hashedPassword, findUser.hashedPassword.toString());
-            console.log(hashedPassword, findUser, password)
+            // const hashedPassword = await bcrypt.hash(password, 10)
+            const passwordMatch = await bcrypt.compare(password, findUser.hashedPassword.toString());
+
 
             if (passwordMatch) {
                 // If the password hashes match, then login the user
                 // and redirect them to the default route.
-                console.log('WE MADE IT')
                 loginUser(req, res, findUser);
                 return res.redirect('/');
 
             }
+
+            errors.push('Login failed for the provided User Name and password');
+            // console.log(errors)
+            res.render('login', {
+                title: 'Login',
+                errors: errors,
+                csrfToken: req.csrfToken(),
+            })
         }
+        
         // Otherwise display an error message to the user.
-        errors.push('Login failed for the provided User Name and password');
     } else  {
         errors = validationErrors.array().map((error) => error.msg);
         // console.log(`FUUUUUUUUUUUCK is it ... ${findUser}, ${valPassword}`)
