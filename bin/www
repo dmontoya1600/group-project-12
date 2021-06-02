@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+const csrf = require('csurf');
+
+const csrfProtection = csrf({ cookie: true });
 
 const port = process.env.PORT || '8080';
 
