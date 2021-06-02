@@ -94,7 +94,7 @@ router.post(
 	csrfProtection,
 	userValidators,
 	asyncHandler(async (req, res) => {
-	// 	// grabs input values from submitted form
+	// grabs input values from submitted form
 		const { email, firstName, lastName, userName, password } = req.body;
 
 		const user = db.User.build({
@@ -109,7 +109,7 @@ router.post(
 		const validatorErrors = validationResult(req);
 
 		// If user input is validated encrypt password.
-        
+
 		if (validatorErrors.isEmpty()) {
 			// Hash inputted password
 			const hashedPassword = await bcrypt.hash(password, 10);
@@ -118,7 +118,7 @@ router.post(
 			// loginUser function (req, res, user);
 			res.redirect('/');
 		} else {
-			// console.log(user);
+            // maps out and renders the errors
 			const errors = validatorErrors.array().map((error) => error.msg);
 			res.render('signup', {
 				title: 'Sign Up',
