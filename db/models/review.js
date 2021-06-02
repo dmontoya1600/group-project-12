@@ -7,13 +7,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     userId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'User'
       }
     },
     movieId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'Movie'
       }

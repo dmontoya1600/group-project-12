@@ -4,27 +4,27 @@ module.exports = (sequelize, DataTypes) => {
 		'Movie',
 		{
 			title: {
-				type: Sequelize.STRING,
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 			genre: {
-				type: Sequelize.STRING,
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 			actors: {
-				type: Sequelize.STRING,
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 			director: {
-				type: Sequelize.STRING,
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 			avgRating: {
-				type: Sequelize.STRING,
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 			description: {
-				type: Sequelize.TEXT,
+				type: DataTypes.TEXT,
 				allowNull: false,
 			},
 		},
