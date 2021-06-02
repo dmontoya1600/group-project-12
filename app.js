@@ -6,6 +6,7 @@ const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const {restoreUser} = require('./auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { restoreUser } = require('./auth');
@@ -15,7 +16,9 @@ const { csrfProtection, asyncHandler } = require('./routes/utils');
 const signUpRouter = require('./routes/signup');
 const moviesRouter = require('./routes/movies');
 const searchRouter = require('./routes/search');
+
 const logoutRouter = require('./routes/logout');
+
 
 const app = express();
 
@@ -27,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(restoreUser);
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
@@ -44,6 +48,13 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+
+
+
+// routes
+
+
+
 // routes
 
 app.use('/', indexRouter);
@@ -51,6 +62,8 @@ app.use('/', restoreUser);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signUpRouter);
+app.use('/login', loginRouter)
+app.use('/users', usersRouter);
 app.use('/movies', moviesRouter);
 app.use('/search', searchRouter);
 app.use('/logout', logoutRouter);
