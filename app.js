@@ -9,7 +9,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signUpRouter = require('./routes/signup');
-const { csrfProtection, asyncHandler } = require('./routes/utils');
 
 const app = express();
 

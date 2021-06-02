@@ -10,17 +10,17 @@ block content
     form(action='/signup' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         label(for=firstName)= 'First Name:'
-        input(type=text name=firstName id=firstName value=firstName)
+        input(type=text name=firstName id=firstName value=newUser.firstName)
         label(for=lastName)= 'Last Name:'
-        input(type=text name=lastName id=lastName value=lastName)
+        input(type=text name=lastName id=lastName value=newUser.lastName)
         label(for=userName)= 'Username:'
-        input(type=text name=userName id=userName value=userName)
+        input(type=text name=userName id=userName value=newUser.userName)
         label(for=email)= 'Email:'
-        input(type=email name=email id=email value=email)
+        input(type=email name=email id=email value=newUser.email)
         label(for=password)= 'Password:'
-        input(type=password name=password id=password value=password)
+        input(type=password name=password id=password value=newUser.password)
         label(for=confirmPassword)= 'Confirm Password:'
-        input(type=confirmPassword name=confirmPassword id=confirmPassword value=confirmPassword)
+        input(type=confirmPassword name=confirmPassword id=confirmPassword value=newUser.password)
         button(type=submit class='btn submit-button') Create User
     div
         p: a(href='/login') Already registered?

@@ -1,11 +1,12 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 
 const db = require('../db/models');
-const session = require('express-session');
+// const session = require('express-session');
 const { csrfProtection, asyncHandler } = require('./utils');
+
+const router = express.Router();
 
 router.get('/', csrfProtection, (req, res) => {
 	// creates User model instance
@@ -94,28 +95,32 @@ router.post(
 	userValidators,
 	asyncHandler(async (req, res) => {
 		// grabs input values from submitted form
-		const { firstName, lastName, userName, email, password } = req.body;
+		const { email, firstName, lastName, userName, password } = req.body;
+
 		const newUser = db.User.build({
 			email,
 			firstName,
 			lastName,
 			userName,
-			password,
 		});
 
+		console.log(newUser.firstName);
+
 		const validatorErrors = validationResult(req);
+
 		// If user input is validated encrypt password.
 		if (validatorErrors.isEmpty()) {
 			// Hash inputted password
 			const hashedPassword = await bcrypt.hash(password, 10);
-			user.hashedPassword = hashedPassword;
-			await user.save();
-			// loginUser function (req, res, user);
+			newUser.hashedPassword = hashedPassword;
+			await newUser.save();
+			// loginUser function (req, res, newUser);
 			res.redirect('/');
 		} else {
+			// console.log(newUser);
 			const errors = validatorErrors.array().map((error) => error.msg);
 			res.render('signup', {
-				title: 'Register',
+				title: 'Sign Up',
 				newUser,
 				errors,
 				csrfToken: req.csrfToken(),
