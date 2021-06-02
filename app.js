@@ -9,7 +9,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const {restoreUser} = require('./auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const { restoreUser } = require('./auth');
 
 const loginRouter = require('./routes/login');
 const { csrfProtection, asyncHandler } = require('./routes/utils');
@@ -30,7 +29,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(restoreUser);
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
