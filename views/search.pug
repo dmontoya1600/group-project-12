@@ -1,0 +1,8 @@
+extends layout
+
+block content
+
+    form(action='/search' method='post')
+        label(for='search') Search Movie
+        input(type='text' name='search')
+        button(type='submit') Search
