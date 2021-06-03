@@ -1,0 +1,25 @@
+body {
+	background-color: #2e2e2e;
+	/* color: #700b00; */
+	color: white;
+}
+
+.movie-box {
+	display: flex;
+	justify-content: space-evenly;
+	flex-flow: row wrap;
+	column-count: 3;
+}
+
+.movie-box,
+.movie-container {
+	font-family: Helvetica, Arial, Times, serif, sans-serif;
+}
+
+.movie-container {
+	display: grid;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+@media screen and (min-width:  )
