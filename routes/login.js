@@ -56,7 +56,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
                 // If the password hashes match, then login the user
                 // and redirect them to the default route.
                 loginUser(req, res, findUser);
-                return res.redirect('/');
+                return res.redirect('/users');
             }
 
             errors.push('Wrong password!');

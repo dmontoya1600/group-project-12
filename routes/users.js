@@ -3,7 +3,6 @@ const router = express.Router();
 const { csrfProtection, asyncHandler } = require('./utils');
 const restoreUser = require('../auth');
 const { User, Movie } = require('../db/models');
-const {Op} = require('sequelize')
 
 /* GET users listing. */
 router.get('/', asyncHandler(async(req, res, next) => {
@@ -18,8 +17,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
 	const fantasy = allMovies.filter(movie => movie.genre.includes('Fantasy'))
 	const sciFi = allMovies.filter(movie => movie.genre.includes('Science Fiction'))
 
-//   // In Postgres, Op.like/Op.iLike/Op.notLike can be combined to Op.any:
-//   [Op.like]: { [Op.any]: ['cat', 'hat'] }  // LIKE ANY ARRAY['cat', 'hat']
+  
 
 	res.render('users', {
 		horror,
