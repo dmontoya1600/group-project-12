@@ -102,6 +102,28 @@ module.exports = {
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
+				{
+					title: 'Finding Nemo',
+					genre: 'Animation, Adventure, Comedy',
+					actors: 'Albert Brooks, Ellen DeGeneres, Alexander Gould',
+					director: 'Andrew StantonLee, Unkrich',
+					avgRating: 0.0,
+					description:
+						'After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'Aladdin',
+					genre: 'Animation, Adventure, Comedy, Romance, Musical',
+					actors: 'Scott Weinger, Robin Williams, Linda Larkin',
+					director: 'Ron Clements, John Musker',
+					avgRating: 0.0,
+					description:
+						'A kindhearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
 			],
 			{}
 		);
