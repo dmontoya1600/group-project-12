@@ -1,43 +1,61 @@
+
 extends layout
 
+
 block content
-    div(class= 'collection-div ')
+    div(class='gallery')
         h2 Horror
-        each movie in horror
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in horror
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Action
-        each movie in action
-            li
-                 a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in action
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Adventure
-        each movie in adventure
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in adventure
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Comedy
-        each movie in comedy
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in comedy
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Drama
-        each movie in drama
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in drama
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Thriller
-        each movie in thriller
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in thriller
+                div(class='user movie')
+                    img(src=`${movie.image}`)
+
+    div(class='gallery')
         h2 Fantasy
-        each movie in fantasy
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
-    div(class= 'collection-div ')
+        div(class= 'collection ')
+            each movie in fantasy
+                div(class='user movie')
+                    img(s
+                    rc=`${movie.image}`)
+    div(class='gallery')
         h2 Science Fiction
-        each movie in sciFi
-            li
-                a(href=`${movie.id}` class="movie title")= movie.title
+        div(class= 'collection ')
+            each movie in sciFi
+                div(class='user movie')
+                    img(s
+                    rc=`${movie.image}`)
