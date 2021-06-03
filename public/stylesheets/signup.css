@@ -1,0 +1,23 @@
+body {
+    background-color: #2E2E2E;
+    color: rgb(229, 9, 20)
+}
+
+label {
+    font-weight: bold;
+}
+
+.logout-btn {
+    margin-bottom: 20px;
+    justify-content: end;
+}
+
+.btn {
+    margin: 10px;
+}
+
+.form-box {
+    width: auto;
+    height: auto;
+    text-align: center;
+}
