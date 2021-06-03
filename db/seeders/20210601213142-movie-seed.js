@@ -115,7 +115,7 @@ module.exports = {
 				},
 				{
 					title: 'Aladdin',
-					genre: 'Animation, Adventure, Comedy, Romance, Musical',
+					genre: 'Animation, Adventure, Comedy, Romance, Fantasy',
 					actors: 'Scott Weinger, Robin Williams, Linda Larkin',
 					director: 'Ron Clements, John Musker',
 					avgRating: 0.0,

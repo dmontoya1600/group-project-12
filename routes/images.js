@@ -8,6 +8,8 @@ const images = {
 	6: '/images/The_Avengers.jpg',
 	7: '/images/Toy_Story.jpg',
 	8: '/images/Resident_Evil.jpg',
+	9: '/images/Finding_Nemo.jpg',
+	10: '/images/Aladdin.jpg',
 };
 
 module.exports = images;
