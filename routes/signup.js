@@ -116,7 +116,7 @@ router.post(
 			await user.save();
 			// logs in user after registration
 			loginUser(req, res, user);
-			res.redirect('/');
+			res.redirect('/users');
 		} else {
 			// maps out and renders the errors
 			const errors = validatorErrors.array().map((error) => error.msg);
