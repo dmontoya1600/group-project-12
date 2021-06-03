@@ -1,22 +1,43 @@
 extends layout
 
 block content
-    ul
+    div(class= 'collection-div ')
+        h2 Horror
         each movie in horror
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Action
         each movie in action
-            li= movie.title
+            li
+                 a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Adventure
         each movie in adventure
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Comedy
         each movie in comedy
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Drama
         each movie in drama
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Thriller
         each movie in thriller
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Fantasy
         each movie in fantasy
-            li= movie.title
-        each movie in fantasy
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
+    div(class= 'collection-div ')
+        h2 Science Fiction
         each movie in sciFi
-            li= movie.title
+            li
+                a(href=`${movie.id}` class="movie title")= movie.title
