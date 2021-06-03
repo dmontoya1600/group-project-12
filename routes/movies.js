@@ -39,4 +39,32 @@ router.get(
 	})
 );
 
+// router.get(
+// 	'/:id(\\d+)',
+// 	asyncHandler(async (req, res) => {
+// 		const movieId = req.params.id;
+// 		const movie = await db.Movie.findByPk(movieId);
+// 		let reviews = await db.Review.findAll()
+// 		let review = await db.Review.build()
+// 		if(reviews.length === 0){
+// 			review.id = 1
+// 			review.movieId = movieId
+// 		}
+
+// 		console.log('THIS HERE IS THE REVIEWS ARRAY',reviews)
+// 		console.log('THIS IS THE REVIEW', review)
+// 		// if movie not found, 404
+// 		if (!movie) {
+// 			res.status(404);
+// 			res.send('movie cannot be found!');
+// 		} else {
+// 			res.render('movie', {
+// 				title: `${movie.title}`,
+// 				movie,
+// 				review
+// 			});
+// 		}
+// 	})
+// );
+
 module.exports = router;
