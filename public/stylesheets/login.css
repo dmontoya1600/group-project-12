@@ -13,8 +13,10 @@ body {
 }
 
 .login-wrapper {
-    height: 100vw;
-    width: 100vw;
+    /* height: 100vw;
+    width: 100vw; */
+    margin-top: 100px;
+    margin-right: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
