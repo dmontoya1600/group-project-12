@@ -1,4 +1,22 @@
 extends layout
 
 block content
-    //- span Welcome #{user.firstName}!
+    ul
+        each movie in horror
+            li= movie.title
+        each movie in action
+            li= movie.title
+        each movie in adventure
+            li= movie.title
+        each movie in comedy
+            li= movie.title
+        each movie in drama
+            li= movie.title
+        each movie in thriller
+            li= movie.title
+        each movie in fantasy
+            li= movie.title
+        each movie in fantasy
+            li= movie.title
+        each movie in sciFi
+            li= movie.title
