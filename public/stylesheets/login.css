@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #2E2E2E;
+    background-size: cover;
+    color: rgb(229,9,20);
+}
+
+.login-wrapper {
+    /* height: 100vw;
+    width: 100vw; */
+    margin-top: 100px;
+    margin-right: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 80px 40px 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+.login-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: skewX(-30deg);
+    transform-origin: bottom left;
+    border-radius: 10px;
+    /* border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px; */
+    pointer-events: none;
+}
+
+
+.login-form .input-group {
+    position: relative;
+}
+
+.login-form .input-group input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background-color: transparent;
+    color: inherit;
+}
+
+.login-form .input-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: .3s ease-out;
+}
+
+.login-form .input-group input:focus + label,
+.login-form .input-group input:valid + label {
+    transform: translateY(-18px);
+    color: rgb(229,9,20);
+    font-size: .8rem;
+}
+
+
+/* input:focus {
+    background-color: lightgray;
+    color: black;
+    font-size: 14px;
+} */
+
+.login-form h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.login-btn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    outline: none;
+    background-color: rgb(229,9,20);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font: bold;
+}
+
+.ul-errors {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 10px;
+    letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
