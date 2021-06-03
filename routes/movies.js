@@ -13,7 +13,7 @@ router.get(
 	'/',
 	asyncHandler(async (req, res) => {
 		const movies = await db.Movie.findAll();
-
+		movies.forEach(movie=> movie.image = images[movie.id])
 		res.render('movies', {
 			movies,
 			images,

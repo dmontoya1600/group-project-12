@@ -3,30 +3,20 @@ body {
     color: rgb(229, 9, 20)
 }
 
-label {
-    font-weight: bold;
-}
+
 
 h2{
     text-decoration: underline;
     padding-bottom: 10px;
 }
 
-.logout-btn {
-    margin-bottom: 20px;
-    justify-content: end;
-}
 
-.btn {
-    margin: 10px;
-}
 
-.form-box {
-    width: auto;
-    height: auto;
-    text-align: center;
-}
 
-.collection-div{
-    margin: 20px;
+.collection{
+    display:grid;
+    overflow: auto;
+    grid-template-columns: 25% 25%;
+    grid-column-gap: 10%;
+    background-color: #313030;
 }
