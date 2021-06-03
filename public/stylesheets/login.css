@@ -22,6 +22,9 @@
     font-size: 100px;
     text-shadow:
     10px 10px 3px rgb(0 0 0), 3px 3px 1px rgb(0 0 0);
+    /* transition: transform 1s linear;
+    animation: logoSlideIn 3s infinite;
+    animation-direction: alternate; */
 }
 
 body {
@@ -136,12 +139,11 @@ input:-webkit-autofill:active {
     justify-content: center;
     align-items: center;
     height: 50%;
-    width: 50%;
     margin-top: 0;
     margin-left: 0;
     padding: 10px;
     letter-spacing: 1px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
