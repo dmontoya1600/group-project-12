@@ -12,3 +12,7 @@ block content
             input(type='hidden' name='movieId' value=movie.movieId)
             button(type='submit')='Write a Review'
     div(class="All Reviews")
+        if reviews
+            each review in reviews
+                ul
+                    li= `${review.comment} - Review by: ${review.User.userName}`
