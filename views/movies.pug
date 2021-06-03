@@ -1,10 +1,13 @@
 extends layout
 
 block content
-    div(class="movie-box")
+    div(class="movies-list")
         if movies
             each movie in movies
+                div(class="movie-card")
                     div(class="movie-container")
-                        a(href=`${movie.id}` class="movie-title")= movie.title
+                        each image, id in images
+                            if `${movie.id}` === id
+                                img(class="movie-image" src=`${image}`)
+                        a(href=`/movie/${movie.id}` class="movie-title")= movie.title
                         h2(class="movie-genre")= movie.genre
-                        img(class="movie-image")

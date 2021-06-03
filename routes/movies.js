@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 const db = require('../db/models');
+const images = require('./images');
 const { csrfProtection, asyncHandler } = require('./utils');
 
 const router = express.Router();
@@ -15,6 +16,7 @@ router.get(
 
 		res.render('movies', {
 			movies,
+			images,
 		});
 	})
 );
