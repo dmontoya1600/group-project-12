@@ -1,10 +1,17 @@
 extends layout
 
 block content
-    div(class="movie-box")
-        if movies
-            each movie in movies
-                    div(class="movie-container")
-                        a(href=`${movie.id}` class="movie-title")= movie.title
-                        h2(class="movie-genre")= movie.genre
-                        img(class="movie-image")
+    div(class="movies-container")
+        div(class="movies-grid")
+            if movies
+                each movie in movies
+                    div(class="movie-card")
+                        each image, id in images
+                            if `${movie.id}` === id
+                                img(
+                                    class="movie-image"
+                                    src=`${image}`
+                                    alt=`${image.split('/')[2].split('.')[0].split('_').join(' ')}`)
+                        div(class="movie-container")
+                            a(href=`/movies/${movie.id}` class="movie-title")= movie.title
+                            p(class="movie-genre")= movie.genre
