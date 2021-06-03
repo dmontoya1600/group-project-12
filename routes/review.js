@@ -20,15 +20,14 @@ const router = express.Router();
 // );
 
 // Finds review based on movie id
+
+
 router.get(
-	'/',
+	'/:id',
 	csrfProtection,
 	asyncHandler(async (req, res) => {
-		// create instance of review
+		let movieId = req.params.id
 		const review = db.Review.build();
-
-		const movieId = req.body.movieId;
-		console.log('id', movieId);
 		res.render('review', {
 			title: 'Review',
 			review,
@@ -36,12 +35,6 @@ router.get(
 			csrfToken: req.csrfToken(),
 		});
 	})
-);
-
-router.get(
-	'/:id',
-	csrfProtection,
-	asyncHandler(async (req, res) => {})
 );
 
 router.post(
