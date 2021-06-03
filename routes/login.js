@@ -5,9 +5,9 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const { User } = require('../db/models');
 const { loginUser } = require('../auth');
-
 const bcrypt = require('bcryptjs');
 
+// GET route for path /login that renders pug template 'login', page title, and csrfToken
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
     res.render('login', {
         title: "Login",
@@ -15,12 +15,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
     });
 }));
 
-// router.get('/', csrfProtection, (req, res, next) => {
-//     res.render('login', {
-//         title: "Login",
-//         csrfToken: req.csrfToken(),//     });
-// });
-
+// loginValidator array with middleware that will get passed into our post method which checks if a username and password exists
 const loginValidators = [
     check('userName')
     .exists({ checkFalsy: true })
@@ -30,15 +25,21 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
+// POST route
 router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
-    const { userName, password } = req.body;    let errors = []
+    // Destructures our request body to pull out our username and password
+    const { userName, password } = req.body;
+    // Errors array to push any errors we get into
+    let errors = []
+    // validationErrors function which is our validationResult with the request passed into it
     const validationErrors = validationResult(req);
-    // const valPassword = await User.findOne({ where: { password=hashedPassword } });    // console.log(validationErrors);    if (validationErrors.isEmpty()) {
-        const findUser = await User.findOne({ where: { userName } });
-        // console.log(findUser)
+    // PSQL query that checks our database for if the username exists
+    const findUser = await User.findOne({ where: { userName } });
+
         if (!findUser) {
-             errors.push('The provided User Name does not exist!');
-            // console.log(errors)
+            // Push error if username doesn't exist
+            errors.push('The provided User Name does not exist!');
+
             res.render('login', {
                 title: 'Login',
                 errors: errors,
@@ -49,7 +50,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
         if (findUser !== null) {
             // If the user exists then compare their password
             // to the provided password.
-            // const hashedPassword = await bcrypt.hash(password, 10)
             const passwordMatch = await bcrypt.compare(password, findUser.hashedPassword.toString());
 
             if (passwordMatch) {
@@ -58,7 +58,7 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
                 loginUser(req, res, findUser);
                 return res.redirect('/users');
             }
-
+            // If password doesn't math then push error to errors array to render
             errors.push('Wrong password!');
             res.render('login', {
                 title: 'Login',
@@ -66,10 +66,6 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
                 csrfToken: req.csrfToken(),
             })
         }
-        // Otherwise display an error message to the user.
-        else  {
-        errors = validationErrors.array().map((error) => error.msg)
-    }
 }));
 
 
