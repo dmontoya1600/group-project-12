@@ -15,6 +15,7 @@ const { csrfProtection, asyncHandler } = require('./routes/utils');
 const signUpRouter = require('./routes/signup');
 const moviesRouter = require('./routes/movies');
 const searchRouter = require('./routes/search');
+// const navbar = require('./navbar')
 
 const logoutRouter = require('./routes/logout');
 
@@ -29,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use(navbar)
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
 
