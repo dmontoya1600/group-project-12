@@ -61,6 +61,7 @@ router.get(
 				movie,
 				favorite,
 				reviews,
+				userReviews,
 				csrfToken: req.csrfToken(),
 			});
 		} else {
