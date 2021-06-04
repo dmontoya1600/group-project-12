@@ -1,3 +1,9 @@
+
+.page {
+    padding-top: 10%;
+}
+
+
 body {
     background-color: #2E2E2E;
     color: rgb(229, 9, 20)
@@ -5,18 +11,39 @@ body {
 
 
 
-h2{
-    text-decoration: underline;
-    padding-bottom: 10px;
+h2 {
+    display: flex;
+    padding: 5px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, .85);
+    width: 100%;
+    margin: 0;
+    font-weight: bold;
 }
 
 
 
 
 .collection{
-    display:grid;
+    padding: 0;
+    display:flex;
     overflow: auto;
-    grid-template-columns: 25% 25%;
-    grid-column-gap: 10%;
+    flex-direction: row;
+    align-content: space-between;
     background-color: #313030;
+}
+
+.user-movie {
+    width: fit-content;
+    margin: 5px;
+    box-shadow: 20px 20px 20px 20px rgba(5, 0, 0, 0.7);
+    background-color: transparent;
+}
+
+.movie {
+    padding: 2%;
+    margin: 0;
+    height: 100%;
+    width: auto;
+    border-radius: 10px;
 }

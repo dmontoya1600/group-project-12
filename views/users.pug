@@ -3,60 +3,64 @@ extends layout
 
 
 block content
-    div(class='gallery')
-        h2 Horror
-        div(class= 'collection ')
-            each movie in horror
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+    div(class="page")
+        div(class='gallery')
+            h2 Horror
+            div(class= 'collection ')
+                each movie in horror
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
 
-    div(class='gallery')
-        h2 Action
-        div(class= 'collection ')
-            each movie in action
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+        div(class='gallery')
+            h2 Action
+            div(class= 'collection ')
+                each movie in action
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
 
-    div(class='gallery')
-        h2 Adventure
-        div(class= 'collection ')
-            each movie in adventure
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+        div(class='gallery')
+            h2 Adventure
+            div(class= 'collection ')
+                each movie in adventure
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
 
-    div(class='gallery')
-        h2 Comedy
-        div(class= 'collection ')
-            each movie in comedy
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+        div(class='gallery')
+            h2 Comedy
+            div(class= 'collection ')
+                each movie in comedy
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
 
-    div(class='gallery')
-        h2 Drama
-        div(class= 'collection ')
-            each movie in drama
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
-                    a(href=`/movies/${movie.id}`)
+        div(class='gallery')
+            h2 Drama
+            div(class= 'collection ')
+                each movie in drama
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
+                        a(href=`/movies/${movie.id}`)
 
-    div(class='gallery')
-        h2 Thriller
-        div(class= 'collection ')
-            each movie in thriller
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+        div(class='gallery')
+            h2 Thriller
+            div(class= 'collection ')
+                each movie in thriller
+                    div(class='user-movie')
+                        img(src=`${movie.image}` class="movie")
 
-    div(class='gallery')
-        h2 Fantasy
-        div(class= 'collection ')
-            each movie in fantasy
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
-    div(class='gallery')
-        h2 Science Fiction
-        div(class= 'collection ')
-            each movie in sciFi
-                div(class='user movie')
-                    img(class=`image-class ${movie.id}` src=`${movie.image}`)
+        div(class='gallery')
+            h2 Fantasy
+            div(class= 'collection ')
+                each movie in fantasy
+                    div(class='user-movie')
+                        img(s
+                        rc=`${movie.image}` class="movie")
+        div(class='gallery')
+            h2 Science Fiction
+            div(class= 'collection ')
+                each movie in sciFi
+                    div(class='user-movie')
+                        img(s
+                        rc=`${movie.image}` class="movie")
+    //- What do these lines do??
     script
-        include ../scripts/user.js
+          include ../scripts/user.js

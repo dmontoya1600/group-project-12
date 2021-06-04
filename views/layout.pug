@@ -9,7 +9,6 @@ html
         link(rel='stylesheet' href='/stylesheets/users.css')
         link(rel='stylesheet' href='/stylesheets/navbar.css')
   body
-
     header(id='navbar')
       nav(class='navbar-container container')
         div(class='first-half')
@@ -31,6 +30,10 @@ html
 
         div(class='navbar-menu')
           ul(class='navbar-links')
+            li
+              a(href="/users" class='navbar-link') Profile
+            li
+              a(href="/movies" class='navbar-link') Movies
             li
               a(href="/search" class='navbar-link') Search
             li
