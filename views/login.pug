@@ -15,6 +15,9 @@ block content
                 div
                     h2
                         button(type='submit' class='login-btn') Login
+            form(action="/login/demo", method="post")
+                input(type='hidden' name='_csrf' value=csrfToken)
+                button(type='submit' class='login-btn') Demo Login
                 if errors
                     ul(class="ul-errors")
                         each error in errors

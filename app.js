@@ -56,7 +56,7 @@ app.use('/', restoreUser);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signUpRouter);
-app.use('/login', loginRouter);
+app.use('/demo', loginRouter);
 app.use('/users', usersRouter);
 app.use('/movies', restoreUser);
 app.use('/movies', moviesRouter);
