@@ -1,15 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('./utils');
-const restoreUser = require('../auth');
+const { restoreUser, userAccessOnly } = require('../auth');
 const { User, Movie } = require('../db/models');
 const images = require('./images');
 
 
 /* GET users listing. */
 router.get('/', asyncHandler(async(req, res, next) => {
+
+	userAccessOnly(req, res)
+
 	const allMovies = await Movie.findAll();
 	allMovies.forEach( movie => movie.image = images[movie.id])
+
 	const horror = allMovies.filter(movie => movie.genre.includes('Horror'))
 	const action = allMovies.filter(movie => movie.genre.includes('Action'))
 	const adventure = allMovies.filter(movie => movie.genre.includes('Adventure'))
