@@ -72,5 +72,48 @@ router.post('/', csrfProtection, loginValidators, asyncHandler(async (req, res, 
     }
 }));
 
+router.get(
+	'/demo',
+	csrfProtection,
+	asyncHandler(async (req, res, next) => {
+		const user = User.build();
+		res.render('login', {
+			title: 'Login',
+			user,
+			csrfToken: req.csrfToken(),
+		});
+	})
+);
+
+router.post(
+	'/demo',
+	csrfProtection,
+	asyncHandler(async (req, res, next) => {
+		// find specific user
+		const demoUserName = 'User';
+		const findDemoUser = await User.findOne({
+			where: { userName: `${demoUserName}` },
+		});
+
+		// creates user model instance
+		if (findDemoUser) {
+			loginUser(req, res, user);
+			res.redirect('/users');
+		} else {
+			const hashedPassword = await bcrypt.hash(password, 10);
+			user.hashedPassword = hashedPassword;
+			// await user.save();
+			const user = await User.create({
+				email: 'test@testing.com',
+				firstName: 'Demo',
+				lastName: 'User',
+				userName: 'User',
+				hashedPassword: 'hashedExample',
+			});
+			loginUser(req, res, user);
+			res.redirect('/users');
+		}
+	})
+);
 
 module.exports = router;
