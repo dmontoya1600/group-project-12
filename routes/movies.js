@@ -27,7 +27,12 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
-
+		const userId = req.session.auth.userId
+		const reviews = await db.Review.findAll({
+			where: {movieId: movie.id, userId: userId},
+			include:['Movie', 'User']
+		})
+		movie.image = images[movie.id]
 		// if movie not found, 404
 		if (!movie) {
 			res.status(404);
@@ -36,6 +41,7 @@ router.get(
 			res.render('movie', {
 				title: `${movie.title}`,
 				movie,
+				reviews
 			});
 		}
 	})

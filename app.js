@@ -18,7 +18,7 @@ const searchRouter = require('./routes/search');
 // const navbar = require('./navbar')
 
 const logoutRouter = require('./routes/logout');
-
+const reviewsRouter = require('./routes/reviews')
 
 const app = express();
 
@@ -66,6 +66,7 @@ app.use('/users', usersRouter);
 app.use('/movies', moviesRouter);
 app.use('/search', searchRouter);
 app.use('/logout', logoutRouter);
+app.use('/reviews', reviewsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

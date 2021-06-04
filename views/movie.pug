@@ -2,8 +2,18 @@ extends layout
 
 block content
     div(class="movie")
+        img(src=`${movie.image}`)
         h1(class="movie title")= title
         h2(class="movie director")= movie.director
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
+    div(class="User Reviews")
+        form(action=`/reviews/${movie.id}` method='')
+            button(type='submit')='Write a Review'
+    div(class="All Reviews")
+        h1 User Reviews
+        if reviews
+            each review in reviews
+                ul
+                    li= `${review.comment} - Review by: ${review.User.userName}`
