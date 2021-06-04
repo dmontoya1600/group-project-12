@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { logoutUser } = require('../auth');
 
-router.post('/logout', (req, res) => {
+router.get('/', (req, res) => {
 	logoutUser(req, res);
 	res.redirect('/');
 });
