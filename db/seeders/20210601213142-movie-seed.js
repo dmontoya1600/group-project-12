@@ -240,7 +240,11 @@ module.exports = {
 					avgRating: 0.0,
 					description:
 						'Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.',
+<<<<<<< HEAD
 					createdAt: new Date(),
+=======
+          			createdAt: new Date(),
+>>>>>>> 284bbd2c321985849137144f5ec5d2fa166515f1
 					updatedAt: new Date(),
 				},
 				{
