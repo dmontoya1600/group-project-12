@@ -25,7 +25,7 @@ const images = {
 	23: "/images/Ferris_Bueller's_Day_Off.jpg",
 	24: '/images/Spider_Man_Into_the_Spider-Verse_(2018).jpg',
 	25: '/images/Logan_(2017).jpg',
-	26: '/images/Avengers:_Endgame_(2019).jpg',
+	26: '/images/Avengers_Endgame_(2019).jpg',
 	27: '/images/Blade_Runner_2049_(2017).jpg',
 	28: "/images/Pan's_Labyrinth_(2006).jpg",
 };
