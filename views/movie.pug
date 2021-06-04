@@ -9,8 +9,12 @@ block content
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
-    div(class="star blank")
-        img(src=`/images/blankstar.png`)
+    if favorite
+        div(class="star gold")
+            img(src=`/images/goldstar.png`)
+    else
+        div(class="star blank")
+            img(src=`/images/blankstar.png`)
     div(class="User Reviews")
         form(action=`/reviews/${movie.id}` method='')
             button(type='submit')='Write a Review'

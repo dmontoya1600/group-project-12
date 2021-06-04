@@ -34,6 +34,10 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
+		const favorite = await db.Favorite.findOne({
+			movieId: movieId
+		})
+		console.log('THIS IS THE FAVORITE ID', favorite)
 		const reviews = await db.Review.findAll({
 			where: { movieId: movie.id },
 			include: ['Movie', 'User'],
@@ -43,7 +47,7 @@ router.get(
 		if (!movie) {
 			res.status(404);
 			res.send('movie cannot be found!');
-		} else if (req.session.auth) {
+		} else if (req.session.auth.userId) {
 			const userId = req.session.auth.userId;
 			const userReviews = await db.Review.findAll({
 				where: { movieId: movie.id, userId: userId },
@@ -52,9 +56,10 @@ router.get(
 			res.render('movie', {
 				title: `${movie.title}`,
 				movie,
-				userReviews,
+				favorite
 				reviews,
 				csrfToken: req.csrfToken(),
+
 			});
 		} else {
 			res.render('movie', {
