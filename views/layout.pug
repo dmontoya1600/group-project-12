@@ -17,9 +17,9 @@ html
             span Welcome #{user.userName}!
           //- form(action='/logout' method='post')
           //-   button(type='submit' class='logout-btn btn') Logout
-          else
-            form(action='/login' method='')
-              button(type='submit' class='btn') Login
+          //- else
+          //-   form(action='/login' method='')
+          //-     button(type='submit' class='btn') Login
               a(href='/signup') Sign Up
             //- div(class='navbar-logo')
               //- img(src="/favicon.ico" class= 'aa-image')
@@ -31,17 +31,21 @@ html
         div(class='navbar-menu')
           ul(class='navbar-links')
             li
-              a(href="/users" class='navbar-link') Profile
+              if locals.authenticated
+                a(href="/users" class='navbar-link') #{user.userName}'s Profile
             li
               a(href="/movies" class='navbar-link') Movies
             li
               a(href="/search" class='navbar-link') Search
-            li
-              a(href="/signup" class='navbar-link') Register
-            li
-              a(href="/login" class='navbar-link') Login
-            li
-              a(href="/logout" class='navbar-link') Logout
+            if !locals.authenticated
+              li
+                a(href="/signup" class='navbar-link') Register
+            if !locals.authenticated
+              li
+                a(href="/login" class='navbar-link') Login
+            if locals.authenticated
+              li
+                a(href="/logout" class='navbar-link') Logout
 
   script
        include ../navbar.js
