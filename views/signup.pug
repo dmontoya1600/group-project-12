@@ -9,27 +9,28 @@ block content
                     each error in errors
                         li= error
 
-        div(class='form-box')
+        div(class='signup-form')
             form(action='/signup' method='post')
                 input(type='hidden' name='_csrf' value=csrfToken)
-                label(for="firstName")= 'First Name:'
-                input(type="text" name="firstName" value=user.firstName)
-                div
+                div(class="input-group")
+                    label(for="firstName")= 'First Name:'
+                    input(type="text" name="firstName" value=user.firstName)
+                div(class="input-group")
                     label(for="lastName")= 'Last Name:'
                     input(type="text" name="lastName" value=user.lastName)
-                div
+                div(class="input-group")
                     label(for="userName")= 'Username:'
                     input(type="text" name="userName" value=user.userName)
-                div
+                div(class="input-group")
                     label(for="email")= 'Email:'
                     input(type="email" name="email" value=user.email)
-                div
+                div(class="input-group")
                     label(for="password")= 'Password:'
                     input(type="password" name="password" value=user.password)
-                div
+                div(class="input-group")
                     label(for="confirmPassword")= 'Confirm Password:'
                     input(type="password" name="confirmPassword" value=user.password)
                 div
-                    button(type="submit" class='btn submit-button') Create User
+                    button(type="submit" class='submit-button') Create Account
                 div
-                    p: a(href='/login') Already registered?
+                    p: a(href='/login' class="login-link") Already registered?
