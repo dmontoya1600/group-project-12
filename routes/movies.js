@@ -38,11 +38,11 @@ router.get(
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
 		const favorite = await db.Favorite.findOne({
-			movieId: movieId,
+			where: {movieId: movieId}
 		});
 		console.log('THIS IS THE FAVORITE ID', favorite);
 		const reviews = await db.Review.findAll({
-			where: { movieId: movie.id },
+			where: { 'movieId': movie.id },
 			include: ['Movie', 'User'],
 		});
 		movie.image = images[movie.id];
