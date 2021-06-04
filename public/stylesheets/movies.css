@@ -13,23 +13,23 @@ body {
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(4, 25%);
-	gap: 10px;
+	gap: 25px;
 	max-width: 1000px;
 }
 
 .movie-card {
-	display: flexbox;
-	justify-content: center;
+	display: grid;
 	flex-flow: row wrap;
 	box-shadow: 0 4px 8px 0 rgba(172, 169, 169, 0.2);
 	transition: 0.3s;
-	border-radius: 5px 5px 0 0;
+	transition: transform 0.4s;
 	border: 1px solid black;
 	max-width: 250px;
 }
 
 .movie-card:hover {
 	box-shadow: 0 8px 16px 0 rgba(248, 244, 244, 0.2);
+	transform: scale(1.1);
 }
 
 .movie-box,
@@ -40,21 +40,35 @@ body {
 .movie-container {
 	text-align: center;
 	width: 224px;
-	height: 62px;
 	padding: 2px 2px;
-	border-radius: 5px 5px 0 0;
 }
 
 .movie-container > a,
 p {
 	margin: 2px;
+	text-decoration: none;
+}
+
+.movie-container > a {
+	font-weight: bold;
+	font-size: 19px;
 }
 
 .movie-image {
 	width: 100%;
 	/* max-width: 500px; */
 	height: auto;
-	border-radius: 5px 5px 0 0;
 }
 
-@media screen and (min-width: );
+.movie-image,
+.movie-container,
+.movie-card {
+	border-radius: 10px 10px 10px 10px;
+}
+
+/* remove underline in links */
+/* a,
+u {
+} */
+
+/* @media screen and (min-width: ); */
