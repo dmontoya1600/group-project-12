@@ -11,12 +11,14 @@ const router = express.Router();
 // renders all movies
 router.get(
 	'/',
+	csrfProtection,
 	asyncHandler(async (req, res) => {
 		const movies = await db.Movie.findAll();
 		movies.forEach((movie) => (movie.image = images[movie.id]));
 		res.render('movies', {
 			movies,
 			images,
+			csrfToken: req.csrfToken(),
 		});
 	})
 );
@@ -28,12 +30,13 @@ router.post('/fetch', asyncHandler(async (req, res) => {
 
 router.get(
 	'/:id(\\d+)',
+	csrfProtection,
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
-		const allReviews = await db.Review.findAll({
+		const reviews = await db.Review.findAll({
 			where: { movieId: movie.id },
-			include: ['Movie'],
+			include: ['Movie', 'User'],
 		});
 		movie.image = images[movie.id];
 		// if movie not found, 404
@@ -50,12 +53,15 @@ router.get(
 				title: `${movie.title}`,
 				movie,
 				userReviews,
+				reviews,
+				csrfToken: req.csrfToken(),
 			});
 		} else {
 			res.render('movie', {
 				title: `${movie.title}`,
 				movie,
-				allReviews,
+				reviews,
+				csrfToken: req.csrfToken(),
 			});
 		}
 	})

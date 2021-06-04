@@ -16,17 +16,17 @@ block content
             button(type='submit')='Write a Review'
         if !locals.authenticated
             p= 'Please login or register to write a review!'
-
+        if locals.authenticated
+            if reviews
+            each review in userReviews
+                ul
+                    li= `${review.comment} - Review by: ${review.User.userName}`
+                        form(action=`/reviews/${review.id}/delete`, method="post")
+                            input(type='hidden' name='_csrf' value=csrfToken)
+                            button(type="submit" id=review.id) Delete
     div(class="All Reviews")
-        h1 User Reviews
+        h1 Reviews
         if reviews
             each review in reviews
                 ul
                     li= `${review.comment} - Review by: ${review.User.userName}`
-                    if locals.authenticated
-                        form(action=`/reviews/${review.id}`, method="post")
-                            input(type='hidden' name='_csrf' value=csrfToken)
-                            button(type="submit" id=review.id) Delete
-    link(rel='stylesheet' href='/stylesheets/movie.css')
-    script
-            include ../scripts/movie-ajax.js
