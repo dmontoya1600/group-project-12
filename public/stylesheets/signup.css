@@ -1,27 +1,115 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #2E2E2E;
-    color: rgb(229, 9, 20)
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(.25turn, #030000, #2E2E2E, #030000);
+    color: rgb(229,9,20);
+    letter-spacing: 1px;
+    font-size: 16px;
 }
 
 .page {
-    padding-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 label {
     font-weight: bold;
 }
 
-.logout-btn {
-    margin-bottom: 20px;
-    justify-content: end;
+.signup-form {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    position: relative;
+    width: 420px;
+    padding: 80px 40px 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    font-size: 16px;
 }
 
-.btn {
-    margin: 10px;
+.signup-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: skewX(-17deg);
+    transform-origin: bottom left;
+    border-radius: 10px;
+    pointer-events: none;
 }
 
-.form-box {
-    width: auto;
-    height: auto;
-    text-align: center;
+.login-link {
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    color: rgb(229,9,20);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.submit-button {
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    color: rgb(229,9,20);
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* for some browsers it will pop up recent typed usernames ect but the color
+does not follow the website theme so the below overrides them  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: red !important;
+}
+
+.signup-form .input-group input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background-color: transparent;
+    color: inherit;
+}
+
+.signup-form .input-group {
+    border: 1px solid black;
+    margin: 3px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.signup-form .input-group input:focus + label,
+.signup-form .input-group input:valid + label {
+    transform: translateY(-18px);
+    color: rgb(229,9,20);
+    font-size: .8rem;
 }
