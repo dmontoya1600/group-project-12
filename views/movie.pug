@@ -4,10 +4,13 @@ block content
     div(class="movie")
         img(src=`${movie.image}`)
         h1(class="movie title")= title
+        input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
         h2(class="movie director")= movie.director
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
+    div(class="star blank")
+        img(src=`/images/blankstar.png`)
     div(class="User Reviews")
         form(action=`/reviews/${movie.id}` method='')
             button(type='submit')='Write a Review'
@@ -24,3 +27,6 @@ block content
                         form(action=`/reviews/${review.id}`, method="post")
                             input(type='hidden' name='_csrf' value=csrfToken)
                             button(type="submit" id=review.id) Delete
+    link(rel='stylesheet' href='/stylesheets/movie.css')
+    script
+            include ../scripts/movie-ajax.js
