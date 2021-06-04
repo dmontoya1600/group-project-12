@@ -12,6 +12,7 @@ block content
         form(action=`/reviews/${movie.id}` method='')
             button(type='submit')='Write a Review'
     div(class="All Reviews")
+        h1 User Reviews
         if reviews
             each review in reviews
                 ul
