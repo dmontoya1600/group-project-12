@@ -1,4 +1,5 @@
 .page {
+    display:grid;
     padding-top: 10%;
 }
 

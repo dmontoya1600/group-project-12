@@ -22,7 +22,7 @@ block content
             p= 'Please login or register to write a review!'
         if locals.authenticated
             if reviews
-            each review in userReviews
+            each review in reviews
                 ul
                     li= `${review.comment} - Review by: ${review.User.userName}`
                         form(action=`/reviews/${review.id}/delete`, method="post")
@@ -34,3 +34,5 @@ block content
             each review in reviews
                 ul
                     li= `${review.comment} - Review by: ${review.User.userName}`
+    script
+            include ../scripts/movie-ajax.js
