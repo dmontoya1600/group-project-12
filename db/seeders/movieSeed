@@ -1,0 +1,10 @@
+{
+    title: '',
+    genre: '',
+    actors: '',
+    director: '',
+    avgRating: 0.0,
+    description: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+},

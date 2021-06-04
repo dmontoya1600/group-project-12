@@ -124,6 +124,83 @@ module.exports = {
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
+				{
+					title: 'Spirited Away',
+					genre: 'Mystery, Fantasy, Animation, Adventure',
+					actors: 'Daveigh Chase, Suzanne Pleshette, Miyu Irino',
+					director: 'Hayao Miyazaki',
+					avgRating: 0.0,
+					description:
+						"During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'The Grand Budapest Hotel',
+					genre: 'Adventure, Comedy, Crime',
+					actors: 'Ralph Fiennes, F. Murray Abraham, Mathieu Amalric',
+					director: 'Wes Anderson',
+					avgRating: 0.0,
+					description:
+						"A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'The Terminator',
+					genre: 'Action, SciFi',
+					actors: 'Arnold SchwarzeneggerLinda HamiltonMichael Biehn',
+					director: 'James Cameron',
+					avgRating: 0.0,
+					description:
+						"A human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity's future salvation.",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'Isle of Dogs',
+					genre: 'Comedy, Drama',
+					actors: 'Bryan Cranston, Koyu Rankin, Edward Norton',
+					director: 'Wes Anderson',
+					avgRating: 0.0,
+					description:
+						"Set in Japan, Isle of Dogs follows a boy's odyssey in search of his lost dog.",
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'Monty Python and the Holy Grail',
+					genre: 'Adventure, Comedy, Fantasy',
+					actors: 'Graham Chapman, John Cleese, Eric Idle',
+					director: 'Terry Gilliam, Terry Jones',
+					avgRating: 0.0,
+					description:
+						'King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles.',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: 'Mean Girls',
+					genre: 'Comedy',
+					actors: 'Lindsay Lohan, Jonathan Bennett, Rachel McAdams',
+					director: 'Mark Waters',
+					avgRating: 0.0,
+					description:
+						'Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+				{
+					title: "Ferris Bueller's Day Off",
+					genre: 'Comedy',
+					actors: 'Matthew Broderick, Alan Ruck, Mia Sara',
+					director: 'John Hughes',
+					avgRating: 0.0,
+					description:
+						'A high school wise guy is determined to have a day off from school, despite what the Principal thinks of that.',
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
 			],
 			{}
 		);
