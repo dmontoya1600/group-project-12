@@ -202,6 +202,31 @@ navbar-link:focus,
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
 }
 
+.search-btn {
+    background-color: rgb(0, 0, 0);
+    color: red;
+    font-weight: bold;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: rgba(255, 255, 255, 0.253);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-label {
+    margin: 3px;
+}
+
+.search-input {
+    font-family: Arial, Helvetica, sans-serif;
+    font: 16px;
+    border-radius: 5px;
+    padding: 5px;
+}
 
 @media screen and (min-width: 700px) {
     .navbar-toggle {

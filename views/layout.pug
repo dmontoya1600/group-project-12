@@ -21,6 +21,12 @@ html
           span(class='icon-bar')
           span(class='icon-bar')
 
+        div(class="search-bar")
+          form(action='/search' method='post' class="search-form")
+              label(for='search' class="search-label") Search Movies:
+              input(type='text' name='search' class="search-input")
+              button(type='submit' class="search-btn") Search
+
         div(class='navbar-menu')
           ul(class='navbar-links')
             li
