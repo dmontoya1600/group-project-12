@@ -124,7 +124,7 @@ input:-webkit-autofill:active {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font: bold;
+    font-weight: bold;
     font-size: 16px;
 }
 
@@ -146,4 +146,8 @@ input:-webkit-autofill:active {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    background-color: transparent;
 }

@@ -2,7 +2,8 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="Good Clips!"
+        link(rel='icon' href='/favicon.png')
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/movies.css')
         link(rel='stylesheet' href='/stylesheets/signup.css')
@@ -12,17 +13,9 @@ html
     header(id='navbar')
       nav(class='navbar-container container')
         div(class='first-half')
-          a(href="/" class='home-link') Good Clips!
-          if locals.authenticated
-            span Welcome #{user.userName}!
-          //- form(action='/logout' method='post')
-          //-   button(type='submit' class='logout-btn btn') Logout
-          //- else
-          //-   form(action='/login' method='')
-          //-     button(type='submit' class='btn') Login
-              a(href='/signup') Sign Up
-            //- div(class='navbar-logo')
-              //- img(src="/favicon.ico" class= 'aa-image')
+          img(src="/circle-cropped.png" class= 'aa-image')
+          //- a(href="/" class='home-link') Good Clips!
+          //-   div(class='navbar-logo')
         button(type='button' class='navbar-toggle' aria-label='Open nav menu')
           span(class='icon-bar')
           span(class='icon-bar')
@@ -51,5 +44,3 @@ html
        include ../navbar.js
 
   block content
-
-

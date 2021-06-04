@@ -37,8 +37,6 @@ router.post(
 		const findUser = await User.findOne({ where: { userName } });
 		let errors = [];
 		const validationErrors = validationResult(req);
-		// const valPassword = await User.findOne({ where: { password=hashedPassword } });    // console.log(validationErrors);    if (validationErrors.isEmpty()) {
-		// console.log(findUser)
 		if (!findUser) {
 			errors.push('The provided User Name does not exist!');
 			// console.log(errors)
@@ -104,11 +102,9 @@ router.post(
 
 		// creates user model instance
 		if (findDemoUser) {
-			loginUser(req, res, user);
+			loginUser(req, res, findDemoUser);
 			res.redirect('/users');
 		} else {
-			// const password = 'password';
-			// const hashedPassword = await bcrypt.hash(password, 10);
 			const user = await User.create({
 				email: 'test12312312@testing.com',
 				firstName: 'Demo',
@@ -117,8 +113,6 @@ router.post(
 				hashedPassword: 'password',
 			});
 
-			// user.hashedPassword = hashedPassword;
-			// await user.save();
 			loginUser(req, res, user);
 			res.redirect('/users');
 		}
