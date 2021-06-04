@@ -24,6 +24,10 @@ router.get(
 );
 
 // Finds movie based on id
+router.post('/fetch', asyncHandler(async (req, res) => {
+	console.log(req.body.YES)
+}))
+
 router.get(
 	'/:id(\\d+)',
 	csrfProtection,
