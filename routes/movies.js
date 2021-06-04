@@ -56,7 +56,7 @@ router.get(
 			res.render('movie', {
 				title: `${movie.title}`,
 				movie,
-				favorite
+				favorite,
 				reviews,
 				csrfToken: req.csrfToken(),
 
