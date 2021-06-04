@@ -6,12 +6,28 @@ const db = require('../db/models');
 // const {Movie, Review} = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 
+// review page
 router.get(
 	'/:id',
 	csrfProtection,
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
+		// if (req.session.auth) {
+		// 	const userId = req.session.auth.userId;
+		// 	res.render('review', {
+		// 		title: 'Review',
+		// 		movie,
+		// 		userId,
+		// 		csrfToken: req.csrfToken(),
+		// 	});
+		// } else {
+		// 	res.render('review', {
+		// 		title: 'Review',
+		// 		movie,
+		// 		csrfToken: req.csrfToken(),
+		// 	})
+		// }
 		const userId = req.session.auth.userId;
 		res.render('review', {
 			title: 'Review',
@@ -22,6 +38,7 @@ router.get(
 	})
 );
 
+// save review to server
 router.post(
 	'/:id',
 	csrfProtection,

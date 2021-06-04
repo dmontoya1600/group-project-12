@@ -13,7 +13,7 @@ router.get(
 	'/',
 	asyncHandler(async (req, res) => {
 		const movies = await db.Movie.findAll();
-		movies.forEach(movie=> movie.image = images[movie.id])
+		movies.forEach((movie) => (movie.image = images[movie.id]));
 		res.render('movies', {
 			movies,
 			images,
@@ -27,21 +27,31 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
-		const userId = req.session.auth.userId
-		const reviews = await db.Review.findAll({
-			where: {movieId: movie.id, userId: userId},
-			include:['Movie', 'User']
-		})
-		movie.image = images[movie.id]
+		const allReviews = await db.Review.findAll({
+			where: { movieId: movie.id },
+			include: ['Movie'],
+		});
+		movie.image = images[movie.id];
 		// if movie not found, 404
 		if (!movie) {
 			res.status(404);
 			res.send('movie cannot be found!');
+		} else if (req.session.auth) {
+			const userId = req.session.auth.userId;
+			const userReviews = await db.Review.findAll({
+				where: { movieId: movie.id, userId: userId },
+				include: ['Movie', 'User'],
+			});
+			res.render('movie', {
+				title: `${movie.title}`,
+				movie,
+				userReviews,
+			});
 		} else {
 			res.render('movie', {
 				title: `${movie.title}`,
 				movie,
-				reviews
+				allReviews,
 			});
 		}
 	})
