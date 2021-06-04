@@ -17,3 +17,7 @@ block content
             each review in reviews
                 ul
                     li= `${review.comment} - Review by: ${review.User.userName}`
+                    if locals.authenticated
+                        form(action=`/reviews/${review.id}`, method="post")
+                            input(type='hidden' name='_csrf' value=csrfToken)
+                            button(type="submit" id=review.id) Delete
