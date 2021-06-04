@@ -27,7 +27,7 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await db.Movie.findByPk(movieId);
-
+		movie.image = images[movie.id]
 		// if movie not found, 404
 		if (!movie) {
 			res.status(404);
