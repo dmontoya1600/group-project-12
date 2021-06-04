@@ -46,12 +46,12 @@ li {
     margin-right: auto; */
 }
 
-/* .aa-image{
+.aa-image{
    border-radius: 50%;
-   width: 30px;
-   height: 30px;
+   width: 60px;
+   height: 60px;
    margin-right: 0.5em;
-} */
+}
 
 .navbar-logo {
     background-color: var(--navbar-text-color-focus);

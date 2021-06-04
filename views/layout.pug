@@ -2,7 +2,8 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="Good Clips!"
+        link(rel='icon' href='/favicon.png')
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/movies.css')
         link(rel='stylesheet' href='/stylesheets/signup.css')
@@ -12,17 +13,9 @@ html
     header(id='navbar')
       nav(class='navbar-container container')
         div(class='first-half')
-          a(href="/" class='home-link') Good Clips!
-          if locals.authenticated
-            span Welcome #{user.userName}!
-          //- form(action='/logout' method='post')
-          //-   button(type='submit' class='logout-btn btn') Logout
-          else
-            form(action='/login' method='')
-              button(type='submit' class='btn') Login
-              a(href='/signup') Sign Up
+          img(src="/circle-cropped.png" class= 'aa-image')
+          //- a(href="/" class='home-link') Good Clips!
             //- div(class='navbar-logo')
-              //- img(src="/favicon.ico" class= 'aa-image')
         button(type='button' class='navbar-toggle' aria-label='Open nav menu')
           span(class='icon-bar')
           span(class='icon-bar')
@@ -31,18 +24,23 @@ html
         div(class='navbar-menu')
           ul(class='navbar-links')
             li
-              a(href="/users" class='navbar-link') Profile
+              if locals.authenticated
+                a(href="/users" class='navbar-link') #{user.userName}'s Profile
             li
               a(href="/movies" class='navbar-link') Movies
             li
               a(href="/search" class='navbar-link') Search
-            li
-              a(href="/signup" class='navbar-link') Register
-            li
-              a(href="/login" class='navbar-link') Login
-            li
-              a(href="/logout" class='navbar-link') Logout
+            if !locals.authenticated
+              li
+                a(href="/signup" class='navbar-link') Register
+            if !locals.authenticated
+              li
+                a(href="/login" class='navbar-link') Login
+            if locals.authenticated
+              li
+                a(href="/logout" class='navbar-link') Logout
 
-  script(src="navbar")
+  script
+       include ../navbar.js
 
   block content

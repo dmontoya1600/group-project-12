@@ -8,10 +8,11 @@ block content
                     div(class="movie-card")
                         each image, id in images
                             if `${movie.id}` === id
-                                img(
-                                    class="movie-image"
-                                    src=`${image}`
-                                    alt=`${image.split('/')[2].split('.')[0].split('_').join(' ')}`)
+                                a(href=`/movies/${movie.id}`)
+                                    img(
+                                        class="movie-image"
+                                        src=`${image}`
+                                        alt=`${image.split('/')[2].split('.')[0].split('_').join(' ')}`)
                         div(class="movie-container")
                             a(href=`/movies/${movie.id}` class="movie-title")= movie.title
                             p(class="movie-genre")= movie.genre
