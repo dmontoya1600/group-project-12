@@ -1,34 +1,35 @@
 extends layout
 
 block content
-    if errors
-        div
-            p The following error(s) occurred:
-            ul
-                each error in errors
-                    li= error
+    div(class="page")
+        if errors
+            div
+                p The following error(s) occurred:
+                ul
+                    each error in errors
+                        li= error
 
-    div(class='form-box')
-        form(action='/signup' method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            label(for="firstName")= 'First Name:'
-            input(type="text" name="firstName" value=user.firstName)
-            div
-                label(for="lastName")= 'Last Name:'
-                input(type="text" name="lastName" value=user.lastName)
-            div
-                label(for="userName")= 'Username:'
-                input(type="text" name="userName" value=user.userName)
-            div
-                label(for="email")= 'Email:'
-                input(type="email" name="email" value=user.email)
-            div
-                label(for="password")= 'Password:'
-                input(type="password" name="password" value=user.password)
-            div
-                label(for="confirmPassword")= 'Confirm Password:'
-                input(type="password" name="confirmPassword" value=user.password)
-            div
-                button(type="submit" class='btn submit-button') Create User
-            div
-                p: a(href='/login') Already registered?
+        div(class='form-box')
+            form(action='/signup' method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                label(for="firstName")= 'First Name:'
+                input(type="text" name="firstName" value=user.firstName)
+                div
+                    label(for="lastName")= 'Last Name:'
+                    input(type="text" name="lastName" value=user.lastName)
+                div
+                    label(for="userName")= 'Username:'
+                    input(type="text" name="userName" value=user.userName)
+                div
+                    label(for="email")= 'Email:'
+                    input(type="email" name="email" value=user.email)
+                div
+                    label(for="password")= 'Password:'
+                    input(type="password" name="password" value=user.password)
+                div
+                    label(for="confirmPassword")= 'Confirm Password:'
+                    input(type="password" name="confirmPassword" value=user.password)
+                div
+                    button(type="submit" class='btn submit-button') Create User
+                div
+                    p: a(href='/login') Already registered?

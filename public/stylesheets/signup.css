@@ -3,6 +3,10 @@ body {
     color: rgb(229, 9, 20)
 }
 
+.page {
+    padding-top: 10%;
+}
+
 label {
     font-weight: bold;
 }
