@@ -6,6 +6,10 @@ block content
         h1(class="movie title")= title
         input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
         h2(class="movie director")= movie.director
+        if movie.avgRating > 0
+            h2(class='rating')= `Average Rating: ${movie.avgRating}`
+        else
+            h2(class='rating')= `Average Rating: Be The First To Rate!`
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
@@ -16,23 +20,19 @@ block content
         div(class="star blank")
             img(src=`/images/blankstar.png`)
     div(class="User Reviews")
-        form(action=`/reviews/${movie.id}` method='')
-            button(type='submit')='Write a Review'
-        if !locals.authenticated
-            p= 'Please login or register to write a review!'
         if locals.authenticated
-            if reviews
-            each review in reviews
-                ul
-                    li= `${review.comment} - Review by: ${review.User.userName}`
+            form(action=`/reviews/${movie.id}` method='')
+                button(type='submit')='Write a Review'
+        else
+        form(action='/login' method='get')
+            button(type='submit')= 'Please login to write a review!'
+        if reviews
+        each review in reviews
+            ul
+                li= `${review.comment} - Review by: ${review.User.userName} - Rating: ${review.rating}`
+                    if locals.user.id == review.userId
                         form(action=`/reviews/${review.id}/delete`, method="post")
                             input(type='hidden' name='_csrf' value=csrfToken)
                             button(type="submit" id=review.id) Delete
-    div(class="All Reviews")
-        h1 Reviews
-        if reviews
-            each review in reviews
-                ul
-                    li= `${review.comment} - Review by: ${review.User.userName}`
     script
             include ../scripts/movie-ajax.js
