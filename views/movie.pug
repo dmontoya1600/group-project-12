@@ -2,7 +2,7 @@ extends layout
 
 block content
     div(class="movie")
-        img(src=`${movie.image}`)
+        img(src=`${movie.image}` class='movie-image')
         h1(class="movie title")= title
         input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
         h2(class="movie director")= movie.director
