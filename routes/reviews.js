@@ -55,7 +55,7 @@ router.post(
 		const { comment } = req.body;
 		const movieId = req.params.id;
 		const userId = req.session.auth.userId;
-		const  rating = Number(req.body.rating);
+		const rating = Number(req.body.rating);
 		const movie = await db.Movie.findByPk(movieId);
 		const allReviews = await db.Review.findAll({
 			where: {

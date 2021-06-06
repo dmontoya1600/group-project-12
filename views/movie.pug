@@ -13,12 +13,13 @@ block content
         h2(class="movie genre")= movie.genre
         h3(class="movie actors")= movie.actors
         p(class="movie description")= movie.description
-    if favorite
-        div(class="star gold")
-            img(src=`/images/goldstar.png`)
-    else
-        div(class="star blank")
-            img(src=`/images/blankstar.png`)
+    if locals.authenticated
+        if favorite
+            div(class="star gold")
+                img(src=`/images/goldstar.png`)
+        else
+            div(class="star blank")
+                img(src=`/images/blankstar.png`)
     div(class="User Reviews")
         if locals.authenticated
             form(action=`/reviews/${movie.id}` method='')
@@ -30,9 +31,10 @@ block content
         each review in reviews
             ul
                 li= `${review.comment} - Review by: ${review.User.userName} - Rating: ${review.rating}`
-                    if locals.user.id == review.userId
-                        form(action=`/reviews/${review.id}/delete`, method="post")
-                            input(type='hidden' name='_csrf' value=csrfToken)
-                            button(type="submit" id=review.id) Delete
+                    if locals.authenticated
+                        if locals.user.id == review.userId
+                            form(action=`/reviews/${review.id}/delete`, method="post")
+                                input(type='hidden' name='_csrf' value=csrfToken)
+                                button(type="submit" id=review.id) Delete
     script
             include ../scripts/movie-ajax.js
