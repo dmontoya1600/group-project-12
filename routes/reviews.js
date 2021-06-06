@@ -57,32 +57,37 @@ router.post(
 		const userId = req.session.auth.userId;
 		const rating = Number(req.body.rating);
 		const movie = await db.Movie.findByPk(movieId);
+		// gets all the reviews of this movie ^
 		const allReviews = await db.Review.findAll({
 			where: {
 				movieId: movieId
 			}
 		})
+
 		Review.create({
 			movieId: movieId,
 			userId: userId,
 			comment: comment,
 			rating: rating
 		});
+
 		if(allReviews.length > 0){
 			let sumOfRatings = 0;
 			const allRatings = allReviews.map(review => review.rating)
+			// creates an array of ratings
 			allRatings.push(rating)
+			// pushes in newly created rating
 			let numReviews = allReviews.length
 			allRatings.forEach(ratingNum => sumOfRatings += ratingNum);
-			let average = (sumOfRatings / allRatings.length).toFixed(1)
-			console.log('THIS IS THE LIST OF ratings', allRatings)
-			console.log('THIS IS THE AVERAGE', average)
+			let average = (sumOfRatings / numReviews).toFixed(1)
+
 			await movie.update({
 				avgRating: average
 			})
 		} else{
 			await movie.update({
 				avgRating: rating.toFixed(1)
+				// decimal (2,1)
 			})
 		}
 

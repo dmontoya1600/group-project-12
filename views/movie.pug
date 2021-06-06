@@ -25,8 +25,8 @@ block content
             form(action=`/reviews/${movie.id}` method='')
                 button(type='submit')='Write a Review'
         else
-        form(action='/login' method='get')
-            button(type='submit')= 'Please login to write a review!'
+            form(action='/login' method='get')
+                button(type='submit')= 'Please login to write a review!'
         if reviews
         each review in reviews
             ul

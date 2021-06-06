@@ -1,6 +1,6 @@
 
 const handleClick = () => {
-
+    // we get the star element
     let star = document.querySelector('.star')
     let image = document.createElement('img');
     let movieId = document.querySelector('.hidden')
