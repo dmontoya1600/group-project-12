@@ -40,7 +40,6 @@ router.get(
 		const favorite = await db.Favorite.findOne({
 			where: {movieId: movieId}
 		});
-		console.log('THIS IS THE FAVORITE ID', favorite);
 		const reviews = await db.Review.findAll({
 			where: { 'movieId': movie.id },
 			include: ['Movie', 'User'],
