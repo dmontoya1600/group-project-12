@@ -10,14 +10,15 @@ html
         link(rel='stylesheet' href='/stylesheets/users.css')
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/movie.css')
+        link(rel='stylesheet' href='/stylesheets/review.css')
         link(rel='stylesheet' href='/stylesheets/search-result.css')
 
   body
     header(id='navbar')
       nav(class='navbar-container container')
         div(class='first-half')
-          img(src="/circle-cropped.png" class= 'aa-image')
-          //- a(href="/" class='home-link') Good Clips!
+          a(href="/" class='home-link')
+            img(src="/circle-cropped.png" class= 'aa-image')
           //-   div(class='navbar-logo')
         button(type='button' class='navbar-toggle' aria-label='Open nav menu')
           span(class='icon-bar')
@@ -37,8 +38,8 @@ html
                 a(href="/users" class='navbar-link') #{user.userName}'s Profile
             li
               a(href="/movies" class='navbar-link') Movies
-            li
-              a(href="/search" class='navbar-link') Search
+            //- li
+            //-   a(href="/search" class='navbar-link') Search
             if !locals.authenticated
               li
                 a(href="/signup" class='navbar-link') Register
@@ -48,8 +49,6 @@ html
             if locals.authenticated
               li
                 a(href="/logout" class='navbar-link') Logout
-
   script
        include ../navbar.js
-
   block content
