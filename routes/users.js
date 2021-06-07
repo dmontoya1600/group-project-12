@@ -14,6 +14,9 @@ router.get(
 		const allMovies = await Movie.findAll();
 		allMovies.forEach((movie) => (movie.image = images[movie.id]));
 
+		// const favMovies = await allMovies.filter();
+
+
 		const horror = allMovies.filter((movie) =>
 			movie.genre.includes('Horror')
 		);

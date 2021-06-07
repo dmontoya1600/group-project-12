@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
+const images = require('./images')
 
 const { Movie, Review } = require('../db/models');
 const db = require('../db/models');
@@ -12,11 +13,13 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const movieId = req.params.id;
 		const movie = await Movie.findByPk(movieId);
+		movie.image = images[movieId];
 		const userId = req.session.auth.userId;
 		res.render('review', {
 			title: 'Review',
 			movie,
 			userId,
+			images,
 			csrfToken: req.csrfToken(),
 		});
 	})

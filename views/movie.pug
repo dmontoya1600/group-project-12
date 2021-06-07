@@ -6,7 +6,7 @@ block content
             img(src=`${movie.image}` class='movie-img')
             h1(class="movie title")= title
             input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
-            p(class="movie director")= movie.director
+            p(class="movie-director")= movie.director
             if movie.avgRating > 0
                 p(class='rating')= `Average Rating: ${movie.avgRating}`
             else
