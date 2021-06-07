@@ -44,7 +44,6 @@ const handleClick = () => {
 
 }
 const handleHover = () => {
-
         let star = document.querySelector('.star')
         if(star.className.includes('blank')){
             let image = document.createElement('img');
@@ -58,7 +57,6 @@ const handleHover = () => {
 
 }
 const handleLeave = () => {
-
         let star = document.querySelector('.star')
         if(star.className.includes('blank')){
             let image = document.createElement('img');
@@ -68,9 +66,6 @@ const handleLeave = () => {
 
         }
 }
-
-
-
 
 // document.querySelector('.star').addEventListener('mouseenter', handleHover, false)
 // // document.querySelector('.star').addEventListener('mouseleave', handleLeave, false)

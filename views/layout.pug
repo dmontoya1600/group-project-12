@@ -17,8 +17,12 @@ html
     header(id='navbar')
       nav(class='navbar-container container')
         div(class='first-half')
-          a(href="/" class='home-link')
-            img(src="/circle-cropped.png" class= 'aa-image')
+          if locals.authenticated
+            a(href="/users" class='home-link')
+              img(src="/circle-cropped.png" class= 'aa-image')
+          else
+            a(href="/movies" class='home-link')
+              img(src="/circle-cropped.png" class= 'aa-image')
           //-   div(class='navbar-logo')
         button(type='button' class='navbar-toggle' aria-label='Open nav menu')
           span(class='icon-bar')

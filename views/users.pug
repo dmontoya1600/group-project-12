@@ -5,6 +5,24 @@ extends layout
 block content
     div(class="page")
         div(class='gallery')
+                h2 Favorites
+                div(class= 'collection ')
+                    if userFavorites
+                    each favorites in userFavorites
+                        div(class='user-movie')
+                            a(href=`/movies/${favorites.movieId}` class="movie-title")
+                                img(src=`${favorites.image}` class=`image-class ${favorites.movieId}`)
+                    else
+                        p You have no Favorite Movies!
+        //- if favorites
+        //-     div(class='gallery')
+        //-         h2 Favorites
+        //-         div(class= 'collection ')
+        //-             each movie in userFavorites
+        //-                 div(class='user-movie')
+        //-                     a(href=`/movies/${movie.id}` class="movie-title")
+        //-                         img(src=`${movie.image}` class=`image-class ${movie.id}`)
+        div(class='gallery')
             h2 Horror
             div(class= 'collection ')
                 each movie in horror
