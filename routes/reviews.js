@@ -84,10 +84,12 @@ router.post(
 			allRatings.forEach(ratingNum => sumOfRatings += ratingNum);
 			let average = (sumOfRatings / numReviews).toFixed(1)
 
+			//updates the avgRating column of the movie row
 			await movie.update({
 				avgRating: average
 			})
 		} else{
+			//since we can't divide by zero, we must update the avgRating directly if the avgRating is 0.0
 			await movie.update({
 				avgRating: rating.toFixed(1)
 				// decimal (2,1)
@@ -118,11 +120,15 @@ router.post(
 		const allRatings = allReviews.map(review => review.rating)
 		let numReviews = allReviews.length
 		allRatings.forEach(ratingNum => sumOfRatings += ratingNum);
+		// since we're working with averages, in order to make it work we need to subtract the rating of the review being deleted from the sum of ratings
+		// we also have to make sure that the numReviews substracts by 1 so that it mimics that number of reviews after removing one.
 		numReviews--;
 		sumOfRatings -= rating
 
 		let average;
 		if(numReviews < 1){
+			//if we destroyed the final review then it'll update the avg to 0.0
+
 			average = 0;
 		} else{
 			average = (sumOfRatings / numReviews).toFixed(1);
