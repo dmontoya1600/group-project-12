@@ -1,40 +1,41 @@
 extends layout
 
 block content
-    div(class="movie")
-        img(src=`${movie.image}` class='movie-image')
-        h1(class="movie title")= title
-        input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
-        h2(class="movie director")= movie.director
-        if movie.avgRating > 0
-            h2(class='rating')= `Average Rating: ${movie.avgRating}`
-        else
-            h2(class='rating')= `Average Rating: Be The First To Rate!`
-        h2(class="movie genre")= movie.genre
-        h3(class="movie actors")= movie.actors
-        p(class="movie description")= movie.description
-    if locals.authenticated
-        if favorite
-            div(class="star gold")
-                img(src=`/images/goldstar.png`)
-        else
-            div(class="star blank")
-                img(src=`/images/blankstar.png`)
-    div(class="User Reviews")
+    div
+        div(class="movie")
+            img(src=`${movie.image}` class='movie-img')
+            h1(class="movie title")= title
+            input(type='hidden' name='hidden' class='hidden' value=`${movie.id}`)
+            p(class="movie director")= movie.director
+            if movie.avgRating > 0
+                p(class='rating')= `Average Rating: ${movie.avgRating}`
+            else
+                p(class='rating')= `Average Rating: Be The First To Rate!`
+            p(class="movie genre")= movie.genre
+            p(class="movie actors")= movie.actors
+            p(class="movie description")= movie.description
         if locals.authenticated
-            form(action=`/reviews/${movie.id}` method='')
-                button(type='submit')='Write a Review'
-        else
-            form(action='/login' method='get')
-                button(type='submit')= 'Please login to write a review!'
-        if reviews
-        each review in reviews
-            ul
-                li= `${review.comment} - Review by: ${review.User.userName} - Rating: ${review.rating}`
-                    if locals.authenticated
-                        if locals.user.id == review.userId
-                            form(action=`/reviews/${review.id}/delete`, method="post")
-                                input(type='hidden' name='_csrf' value=csrfToken)
-                                button(type="submit" id=review.id) Delete
-    script
-            include ../scripts/movie-ajax.js
+            if favorite
+                div(class="star gold")
+                    img(src=`/images/goldstar.png`)
+            else
+                div(class="star blank")
+                    img(src=`/images/blankstar.png`)
+        div(class="User Reviews")
+            if locals.authenticated
+                form(action=`/reviews/${movie.id}` method='')
+                    button(type='submit')='Write a Review'
+            else
+                form(action='/login' method='get')
+                    button(type='submit')= 'Please login to write a review!'
+            if reviews
+            each review in reviews
+                ul
+                    li= `${review.comment} - Review by: ${review.User.userName} - Rating: ${review.rating}`
+                        if locals.authenticated
+                            if locals.user.id == review.userId
+                                form(action=`/reviews/${review.id}/delete`, method="post")
+                                    input(type='hidden' name='_csrf' value=csrfToken)
+                                    button(type="submit" id=review.id) Delete
+        script
+                include ../scripts/movie-ajax.js
