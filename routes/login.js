@@ -90,6 +90,7 @@ router.get(
 	})
 );
 
+//create demo
 router.post(
 	'/demo',
 	csrfProtection,
@@ -103,7 +104,7 @@ router.post(
 		// creates user model instance
 		if (findDemoUser) {
 			loginUser(req, res, findDemoUser);
-			res.redirect('/users');
+			// res.redirect('/users');
 		} else {
 			const user = await User.create({
 				email: 'test12312312@testing.com',
@@ -114,8 +115,9 @@ router.post(
 			});
 
 			loginUser(req, res, user);
-			res.redirect('/users');
+			// res.redirect('/users');
 		}
+		res.redirect('/users');
 	})
 );
 

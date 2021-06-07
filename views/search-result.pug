@@ -2,9 +2,9 @@ extends layout
 
 block content
     div(class="movies-container")
-        if result
-            each movie in result
-                div(class="search-result")
+        div(class="movies-grid")
+            if result
+                each movie in result
                     div(class="movie-card")
                         each image, id in images
                             if `${movie.id}` === id

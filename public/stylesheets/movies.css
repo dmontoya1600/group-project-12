@@ -14,7 +14,7 @@ body {
 	justify-content: center;
 	grid-template-columns: repeat(4, 25%);
 	gap: 25px;
-	max-width: 1000px;
+	width: 1000px;
 }
 
 .movie-card {
