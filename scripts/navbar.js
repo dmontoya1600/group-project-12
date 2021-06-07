@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     navbarToggle.addEventListener("click", () => {
-        // console.log('WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')
         if (navbar.classList.contains("opened")) {
             closeNavbar();
         } else {

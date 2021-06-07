@@ -1,8 +1,32 @@
 div.star {
 	height: 30px;
 	width: 30px;
+    margin-left: 30px;
+}
+
+h1{
+    grid-row-start: 1;
+    grid-column-start: 2;
+}
+
+.movie{
+    display:grid;
+    /* grid-auto-flow: row; */
 }
 
 .movie-img {
-	border-top: 10px;
+    border-top: 10px;
+    grid-column: 1;
+}
+
+.movie-description{
+    grid-column: 2;
+}
+
+.ind-movie-container{
+    padding-top: 50px;
+}
+
+.user-reviews{
+    margin-left: 30px;
 }

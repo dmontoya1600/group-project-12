@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    div
+    div(class='ind-movie-container')
         div(class="movie")
             img(src=`${movie.image}` class='movie-img')
             h1(class="movie title")= title
@@ -11,9 +11,9 @@ block content
                 p(class='rating')= `Average Rating: ${movie.avgRating}`
             else
                 p(class='rating')= `Average Rating: Be The First To Rate!`
-            p(class="movie genre")= movie.genre
-            p(class="movie actors")= movie.actors
-            p(class="movie description")= movie.description
+            p(class="movie-description")= movie.description
+            p(class="movie-genre")= movie.genre
+            p(class="movie-actors")= movie.actors
         if locals.authenticated
             if favorite
                 div(class="star gold")
@@ -21,7 +21,7 @@ block content
             else
                 div(class="star blank")
                     img(src=`/images/blankstar.png`)
-        div(class="User Reviews")
+        div(class="user-reviews")
             if locals.authenticated
                 form(action=`/reviews/${movie.id}` method='')
                     button(type='submit')='Write a Review'
