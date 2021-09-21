@@ -17,7 +17,7 @@ block content
                         button(type='submit' class='login-btn') Login
             form(action="/login/demo", method="post")
                 input(type='hidden' name='_csrf' value=csrfToken)
-                button(type='submit' class='login-btn') Demo Login
+                button(type='submit' class='demo-btn') Demo Login
                 if errors
                     ul(class="ul-errors")
                         each error in errors

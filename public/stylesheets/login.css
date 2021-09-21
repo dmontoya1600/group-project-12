@@ -128,6 +128,23 @@ input:-webkit-autofill:active {
     font-size: 16px;
 }
 
+.demo-btn {
+    display: block;
+    margin-top: 50px;
+    margin-left: 30%;
+    border: none;
+    outline: none;
+    background-color: rgb(229,9,20);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .ul-errors {
     display: flex;
     justify-content: center;
