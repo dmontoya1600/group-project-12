@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('hey')
 
     const navbar = document.getElementById("navbar");
     const navbarToggle = document.querySelector(".navbar-toggle");
@@ -19,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (navbar.classList.contains("opened")) {
             closeMobileNavbar();
         } else {
-             openMobileNavbar();
+            openMobileNavbar();
         }
     });
 
@@ -27,8 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const navbarLinksContainer = document.querySelector(".navbar-links");
 
     navbarLinksContainer.addEventListener("click", (clickEvent) => {
-         clickEvent.stopPropagation();
+        clickEvent.stopPropagation();
     });
 
-navbarMenu.addEventListener("click", closeMobileNavbar);
+    navbarMenu.addEventListener("click", closeMobileNavbar);
 })

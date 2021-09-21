@@ -51,7 +51,7 @@ const handleHover = () => {
             star.removeChild(star.firstChild);
             star.appendChild(image)
             setTimeout(function() {
-             image.src = '/images/blankstar.png'
+            image.src = '/images/blankstar.png'
             }, 500);
         }
 

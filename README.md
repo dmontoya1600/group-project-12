@@ -1,6 +1,10 @@
-# Express Project Skeleton
+# Express Project - Good Clips
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+## Starter
+    In the root directory of GoodClips, run npm start to spin up application.  Application can be accessed via localhost:8080.
+
+## Front End
+    The front end is built using JavaScript event listeners for responsive web design.  I am also using the html templating engine, Pug, to render elements with user specific info.  When the back end route gets hit, the route runs and renders values to Pug which displays those values.
+
+## Back End
+    The back end is built using Express.js.  The routes directory holds all the route paths for each feature.  In the root level of the GoodClips directory, the app.js file hold the Express app aliased as app and directs each request to the correct route.

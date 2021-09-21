@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (navbar.classList.contains("opened")) {
             closeNavbar();
         } else {
-             openNavbar();
+            openNavbar();
         }
     });
 
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const navbarLinksContainer = document.querySelector(".navbar-links");
 
     navbarLinksContainer.addEventListener("click", (clickEvent) => {
-         clickEvent.stopPropagation();
+        clickEvent.stopPropagation();
     });
 
 navbarMenu.addEventListener("click", closeNavbar);
